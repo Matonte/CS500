@@ -1,5 +1,3 @@
-# Online Python compiler (interpreter) to run Python online.
-# Write Python 3 code in this online editor and run it.
 # Module 3 
 # Problem 1- input a list of items to be added, then print out the total 
 # plus a 7% tax and 15% tip. The tip is of the taxed amount. 
