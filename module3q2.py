@@ -9,7 +9,7 @@ def give_the_time():
     time = 0
     try: #have a way to handle bad input
         print("What is the hour?")
-        hour = int(input())
+        hour = int(input()) % 24
         print("what is the time?")
         time = int(input())
     except ValueError:
