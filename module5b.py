@@ -12,9 +12,12 @@
 
 #create global variables 
 points = 0
+# input
 print("how many books did you buy?")
 books = int(input())
 
+#conditional logic for problem. Designed in a way that gives the right amount of points 
+# in a descending way 
 if books > 7:
     points = 60
 elif books > 5:
@@ -24,5 +27,5 @@ elif books > 3:
 elif books > 1:
     points = 5
 
-
-print(points)
+# print the answer 
+print("You have earned " + str(points)+".")
