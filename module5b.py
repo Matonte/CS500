@@ -9,7 +9,8 @@
 #    If a customer purchases 6 books, they earn 30 points.
 #    If a customer purchases 8 or more books, they earn 60 points.
  #   Write a program that asks the user to enter the number of books that they have purchased this month and then display the number of points awarded.
-
+# References 
+# https://www.w3schools.com/python/ref_func_range.asp
 #create global variables 
 points = 0
 # input
