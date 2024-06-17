@@ -13,15 +13,15 @@ class ShoppingCart:
         self.cart_items.append(item)
     
     def remove_item(self,item_name):
-        print(item_name)
+        found = False
         item = ItemToPurchase(item_name)
         for i in self.cart_items:
-            print(i.name)
             if i.name == item.name:
                self.cart_items.remove(i)
                print("Item removed.")
+               found = True
                break
-            else: 
+        if found is False:
                print("Item not found in cart. Nothing removed.")
     
     def modify_item(self,ItemToPurchase):
@@ -51,8 +51,6 @@ class ShoppingCart:
         item = ItemToPurchase()
         item.name = input()
         for i in self.cart_items:
-            print (i)
-            print( i.name)
             if i.name == item.name:
                 item = i
         if item in self.cart_items:
@@ -82,6 +80,7 @@ class ShoppingCart:
                 total += (item.price * item.item_quantity)
                 item.print_item_cost()
             print("\nThe total is $%.2f" % round(total, 2))
+            print("\n")
         else: 
             print("SHOPPING CART IS EMPTY")
         
@@ -110,7 +109,6 @@ class ItemToPurchase:
         " "+ str(self.item_quantity) + " @ $"+ str(round(self.price,2)) +". Item cost is $" +str(cost))
         
 # Prompt to create objects and set the values of their attributes 
-
 def print_menu():
     
     print("                    ~~WECLOME~~")
@@ -119,10 +117,7 @@ def print_menu():
     print("What is the date?")
     date = input()
     cart =  ShoppingCart(name,date)
-    item_0 = ItemToPurchase("Things",99.99,4," it has to do deal with things.")
-    item_1 = ItemToPurchase("Stuff",49.99,6," those things DO involve stuff!")
-    cart.add_item(item_0)
-    cart.add_item(item_1)
+    
     for i in cart.cart_items :
         print(i.name)
     print("                       MENU     ")
@@ -136,25 +131,29 @@ def print_menu():
         print("o - output shopping cart")
         answer = input()
         if answer == 'q':
+            print("QUITTING")
             break
         elif answer == 'c':
+            print("MODIFYING ITEM QUANTITY")
             cart.modify_quantity()
         elif answer == 'a':
+            print("ADD ITEM TO CART")
             item  = ItemToPurchase()
             cart.modify_item(item)
             cart.add_item(item)
             cart.print_total()
             print("item added")
         elif answer == 'r':
-            print(cart.get_num_of_items_in_cart())
+            print("REMOVE ITEM FROM CART")
             print("What item do you want to remove?")
             item = input()
             cart.remove_item(item)
-            print(cart.get_num_of_items_in_cart())
             print
         elif answer == 'i':
+            print("CART DESCRIPTIONS")
             cart.print_descriptions()
         elif answer == 'o':
+            print("CART CONTENTS AND PRICE")
             cart.print_total()
 
 def main(): 
