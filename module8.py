@@ -1,18 +1,21 @@
 # Module 8 
 #
+#Shopping Cart Class
 class ShoppingCart:
-    #Constructor
+    #Constructor w/ default variables
         
     def __init__(self, customer_name= "None", current_date= "January 1, 2020",cart_items =[]):
         self.customer_name = customer_name
         self.current_date = current_date
         self.cart_items = cart_items
     
-
+# basic add item function
     def add_item(self,item):
         self.cart_items.append(item)
-    
+        
+# remove item that uses polling with a dummy object to find item to remove
     def remove_item(self,item_name):
+        print(item_name)
         found = False
         item = ItemToPurchase(item_name)
         for i in self.cart_items:
@@ -23,7 +26,8 @@ class ShoppingCart:
                break
         if found is False:
                print("Item not found in cart. Nothing removed.")
-    
+
+# Will create the details of an item if there are currently none 
     def modify_item(self,ItemToPurchase):
         if ItemToPurchase.name == "None":
             print("What's item's name?")
@@ -45,7 +49,8 @@ class ShoppingCart:
                     print("Bad input")
         else:
             print(" Item not found in cart. Nothing modified.")
-            
+
+# uses dummy object, as assignment suggested
     def modify_quantity(self):
         print("What is the item?")
         item = ItemToPurchase()
@@ -61,17 +66,19 @@ class ShoppingCart:
                 print("Bad input")
         else:
             print(" Item not found in cart. Nothing modified.")
-    
+
+#  simple wrapper function to return number of items
     def get_num_of_items_in_cart(self):
         return len(self.cart_items)
     
-    
+# Cost of cart function
     def cost_of_cart(self):
         total = 0.0
         for item in list(self.cart_items):
             total += (item.price * item.item_quantity)
         return round(total, 2)
-    
+ 
+ # Print function  
     def print_total(self):
         total = 0.0
         if self.get_num_of_items_in_cart() > 0:
@@ -83,7 +90,7 @@ class ShoppingCart:
             print("\n")
         else: 
             print("SHOPPING CART IS EMPTY")
-        
+ # Description function        
     def print_descriptions(self):
         print("\n" + self.customer_name+"'s Shopping Cart" +"- "+ self.current_date)
         print("\nItem Descriptions")
@@ -91,9 +98,9 @@ class ShoppingCart:
             print(item.name+": "+item.item_description)
 
     
-# Class
+# Class for terms 
 class ItemToPurchase:
-    # Constructor
+    # Constructor with default variables 
     def __init__(self, name= "None", price = 0.0 ,item_quantity= 0,item_description="None"):
         self.name = name
         self.price = price
@@ -108,7 +115,7 @@ class ItemToPurchase:
         print(self.name +
         " "+ str(self.item_quantity) + " @ $"+ str(round(self.price,2)) +". Item cost is $" +str(cost))
         
-# Prompt to create objects and set the values of their attributes 
+# Print the menu 
 def print_menu():
     
     print("                    ~~WECLOME~~")
@@ -136,18 +143,17 @@ def print_menu():
         elif answer == 'c':
             print("MODIFYING ITEM QUANTITY")
             cart.modify_quantity()
+    
         elif answer == 'a':
             print("ADD ITEM TO CART")
             item  = ItemToPurchase()
             cart.modify_item(item)
             cart.add_item(item)
-            cart.print_total()
             print("item added")
         elif answer == 'r':
             print("REMOVE ITEM FROM CART")
             print("What item do you want to remove?")
-            item = input()
-            cart.remove_item(item)
+            cart.remove_item(input())
             print
         elif answer == 'i':
             print("CART DESCRIPTIONS")
@@ -155,7 +161,8 @@ def print_menu():
         elif answer == 'o':
             print("CART CONTENTS AND PRICE")
             cart.print_total()
-
+            
+# Main method
 def main(): 
     print_menu()
                        
