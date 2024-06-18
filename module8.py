@@ -15,7 +15,6 @@ class ShoppingCart:
         
 # remove item that uses polling with a dummy object to find item to remove
     def remove_item(self,item_name):
-        print(item_name)
         found = False
         item = ItemToPurchase(item_name)
         for i in self.cart_items:
